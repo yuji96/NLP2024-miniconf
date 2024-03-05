@@ -34,7 +34,6 @@ jobs:
       uses: "JamesIves/github-pages-deploy-action@3.7.1"
       with:
           # REPOSITORY_NAME: mini-conf/mini-conf.github.io
-          BRANCH: main  # The branch the action should deploy to.
           SSH: true
           FOLDER: build/ # The folder the action should deploy.
           CLEAN: true
