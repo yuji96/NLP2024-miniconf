@@ -12,6 +12,8 @@
 
 {% endblock %}
 
+
+{#
 {% block tabs %}
 <ul class="nav nav-pills justify-content-center">
   <li class="nav-item active">
@@ -29,8 +31,9 @@
     <a class="nav-link text-muted" href="paper_vis.html">Visualization</a>
   </li>
 </ul>
-
 {% endblock %}
+#}
+
 
 {% block content %}
 <div class="row p-3"></div>
@@ -79,7 +82,7 @@
   >
     <div class="btn-group btn-group-toggle filter_option">
       <label
-        class="btn btn-outline-secondary"
+        class="btn btn-outline-secondary active"
         data-tippy-content="Search for papers titles"
       >
         <input
@@ -104,7 +107,7 @@
         keyword
       </label>
       <label
-        class="btn btn-outline-secondary active"
+        class="btn btn-outline-secondary"
         data-tippy-content="Search for papers from specific authors"
       >
         <input type="radio" name="options" value="authors" autocomplete="off" />
@@ -120,19 +123,20 @@
         data-toggle="buttons"
       >
         <label class="btn btn-outline-secondary active">
-          <input type="radio" name="options" value="mini" autocomplete="off" />
+          <input type="radio" name="options" value="mini" autocomplete="off" checked/>
           mini
         </label>
-        <label class="btn btn-outline-secondary active">
+        {#
+        <label class="btn btn-outline-secondary">
           <input
             type="radio"
             name="options"
             value="compact"
             autocomplete="off"
-            checked
           />
           compact
         </label>
+        #}
         <label class="btn btn-outline-secondary">
           <input
             type="radio"

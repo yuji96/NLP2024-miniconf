@@ -86,6 +86,8 @@
 <body>
 <!-- NAV -->
 {% block header %}
+{% set navigation_bar = [('papers.html', 'Papers')] -%}
+{#
 {% set navigation_bar = [
 ('index.html', 'Home'),
 ('calendar.html', 'Schedule'),
@@ -94,12 +96,14 @@
 ('chat.html', 'Chat'),
 ('help.html', 'Help'),
 ] -%}
+#}
 
 <nav
         class="navbar sticky-top navbar-expand-lg navbar-light bg-light mr-auto"
         id="main-nav"
 >
     <div class="container">
+        {#
         <a class="navbar-brand" href="index.html">
             <img
                     class="logo" src="{{config.logo.image}}"
@@ -107,6 +111,7 @@
             width={{config.logo.width | default("auto") | tojson}}
             />
         </a>
+        #}
         {% if config.site_title %}
         <a class="navbar-brand" href="index.html">{{config.site_title}}</a>
         {% endif %}

@@ -15,12 +15,12 @@ const filters = {
 // names for render modes
 const MODE = {
   mini: "mini",
-  compact: "compact",
+  // compact: "compact",
   detail: "detail"
 }
 
 
-let render_mode = MODE.compact;
+let render_mode = MODE.mini;
 
 const updateCards = (papers) => {
   Promise.all([
@@ -152,7 +152,7 @@ const updateSession = () => {
  * START here and load JSON.
  */
 const start = () => {
-  const urlFilter = getUrlParameter("filter") || "keywords";
+  const urlFilter = getUrlParameter("filter") || "titles";
   setQueryStringParameter("filter", urlFilter);
   updateFilterSelectionBtn(urlFilter);
 
@@ -231,7 +231,7 @@ const card_detail = (paper, show) => {
     return ` 
      <div class="pp-card-header" style="overflow-y: auto;">
      <div style="width:100%; ">
-        <p class="card-text"><span class="font-weight-bold">Keywords:</span>
+        <p class="card-text" hidden><span class="font-weight-bold">Keywords:</span>
             ${paper.keywords.map(keyword).join(", ")}
         </p>
         <p class="card-text"> ${paper.TLDR}</p>
@@ -290,9 +290,9 @@ const card_html = (paper) =>
   `
         <div class="pp-card pp-mode-${render_mode} ">
             <div class="pp-card-header" style="">
-            <div class="checkbox-paper fas ${paper.read ? "selected" : ""}" 
-            style="display: block;position: absolute; bottom:${render_mode === MODE.detail ? 375 : 35}px;left: 35px;">&#xf00c;</div>
-            <div class="checkbox-bookmark fas  ${paper.bookmarked ? "selected" : ""}" 
+            <div hidden class="checkbox-paper fas ${paper.read ? "selected" : ""}" 
+            style="display: block;position: absolute; bottom:${render_mode === MODE.detail ? 210 : 35}px;left: 35px;">&#xf00c;</div>
+            <div hidden class="checkbox-bookmark fas  ${paper.bookmarked ? "selected" : ""}" 
             style="display: block;position: absolute; top:-5px;right: 25px;">&#xf02e;</div>
             
 <!--                ✓-->
@@ -305,7 +305,7 @@ const card_html = (paper) =>
                 <h6 class="card-subtitle text-muted" align="center">
                         ${paper.authors.join(", ")}
                 </h6>
-                ${card_image(paper, render_mode !== MODE.mini)}
+                ${card_image(paper, false)}
                 
             </div>
                
