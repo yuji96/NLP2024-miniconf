@@ -6,7 +6,8 @@ import json
 import os
 
 import yaml
-from flask import Flask, jsonify, redirect, render_template, send_from_directory
+from flask import (Flask, jsonify, redirect, render_template,
+                   send_from_directory)
 from flask_frozen import Freezer
 from flaskext.markdown import Markdown
 
@@ -141,9 +142,9 @@ def format_paper(v):
         "recs": [],
         "sessions": list_fields["sessions"],
         # links to external content per poster
-        "pdf_url": v.get("pdf_url", ""),  # render poster from this PDF
-        "code_link": "https://github.com/Mini-Conf/Mini-Conf",  # link to code
-        "link": "https://arxiv.org/abs/2007.12238",  # link to paper
+        # "pdf_url": v.get("pdf_url", ""),  # render poster from this PDF
+        # "code_link": "https://github.com/Mini-Conf/Mini-Conf",  # link to code
+        "link": f"https://anlp.jp/proceedings/annual_meeting/2024/pdf_dir/{v['UID']}.pdf",  # link to paper
     }
 
 

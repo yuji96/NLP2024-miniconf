@@ -47,12 +47,14 @@
             {% endfor %}
         </p>
         <div class="text-center p-3">
+            {#
             <a class="card-link" data-toggle="collapse" role="button"
                href="#details">
                 Abstract
             </a>
+            #}
             <a class="card-link" target="_blank" href="{{paper.link}}">
-                Paper
+                Paper (PDF)
             </a>
             {% if paper.code_link != blank %}
             <a href="{{paper.code_link}}" target="_blank" class="card-link">
@@ -62,7 +64,7 @@
         </div>
     </div>
 </div>
-<div id="details" class="pp-card m-3 collapse">
+<div id="details" class="pp-card m-3">
     <div class="card-body">
         <div class="card-text">
             <div id="abstractExample">
@@ -74,6 +76,7 @@
     </div>
 </div>
 
+{#
 <h5 style="color: red;">
     Add content for posters. This could be a video, embedded pdf, chat room ....
 </h5>
@@ -117,7 +120,7 @@
 {{ components.section("Example Poster") }}
 
 <div role="main" id="pdf_view"></div>
-
+#}
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.3.200/build/pdf.min.js"></script>
 <script src="static/js/modules/pdfRender.js"></script>

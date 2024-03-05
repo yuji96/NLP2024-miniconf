@@ -290,14 +290,13 @@ const card_html = (paper) =>
   `
         <div class="pp-card pp-mode-${render_mode} ">
             <div class="pp-card-header" style="">
-            <div hidden class="checkbox-paper fas ${paper.read ? "selected" : ""}" 
-            style="display: block;position: absolute; bottom:${render_mode === MODE.detail ? 210 : 35}px;left: 35px;">&#xf00c;</div>
-            <div hidden class="checkbox-bookmark fas  ${paper.bookmarked ? "selected" : ""}" 
+            <div class="checkbox-paper fas ${paper.read ? "selected" : ""}" 
+            style="display: block;position: absolute; bottom:${render_mode === MODE.detail ? 375 : 35}px;left: 35px;">&#xf00c;</div>
+            <div class="checkbox-bookmark fas  ${paper.bookmarked ? "selected" : ""}" 
             style="display: block;position: absolute; top:-5px;right: 25px;">&#xf02e;</div>
             
 <!--                ✓-->
                 <a href="${API.posterLink(paper)}"
-                target="_blank"
                    class="text-muted">
                    <h5 class="card-title" align="center"> ${
     paper.title
