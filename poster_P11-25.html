@@ -1,0 +1,254 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- External Javascript libs_ext  -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@5/dist/d3.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@4.7.3/dist/handlebars.min.js"
+            integrity="sha256-/PJBs6QWvXijOFIX04kZpLb6ZtSQckdOIavLWKKOgXU="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js"
+            integrity="sha256-WqU1JavFxSAMcLP2WIOI+GB2zWmShMI82mTpLDcqFUg="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/min/moment.min.js"
+            integrity="sha256-4iQZ6BVL4qNKlQ27TExEhBN1HFPvAvAMbFavKKosSWQ="
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment-timezone@0.5.28/builds/moment-timezone-with-data.min.js"
+            integrity="sha256-IWYg4uIC8/erItNXYvLtyYHioRi2zT1TFva8qaAU/ww="
+            crossorigin="anonymous"></script>
+
+
+    <!-- Library libs_ext -->
+    <script src="static/js/libs_ext/typeahead.bundle.js"></script>
+
+
+    <!--    Internal Libs -->
+    <script src="static/js/data/api.js"></script>
+
+    
+
+    <!-- External CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha256-YLGeXaapI0/5IgZopewRJcFXomhRMlYYjugPLSyNjTY="
+          crossorigin="anonymous">
+
+    <!-- External Fonts (no google for china) -->
+    <link
+            href="static/css/Lato.css"
+            rel="stylesheet"
+    />
+    <link href="static/css/Exo.css" rel="stylesheet"/>
+    <link
+            href="static/css/Cuprum.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" href="static/css/main.css"/>
+<!--    <link rel="stylesheet" href="static/css/fa_regular.css"/>-->
+    <link rel="stylesheet" href="static/css/fa_solid.css"/>
+    <link rel="stylesheet" href="static/css/lazy_load.css"/>
+    <link rel="stylesheet" href="static/css/typeahead.css"/>
+
+    <title>NLP2024コード生成のための大規模言語モデルを用いた検索手法</title>
+    
+<meta name="citation_title" content="コード生成のための大規模言語モデルを用いた検索手法"/>
+
+<meta name="citation_author" content="○中原康宏, 宮下大輔, 出口淳 (キオクシア)"/>
+
+<meta name="citation_publication_date" content=""/>
+<meta name="citation_conference_title"
+      content=""/>
+<meta name="citation_inbook_title" content=""/>
+<meta name="citation_abstract" content="Large Language Model によるプログラムコード生成は有用であるが，LLM が持つ情報の更新には膨大なコストが必要である．この課題に対応するために，関連する情報を検索し LLM への入力に追加する手法が提唱されており，コード生成の分野ではBM25 などのベクトル検索を用いた手法が成果を挙げている．しかし，GitHub のような Web サイトをデータベースとする場合，全データを手元に置く必要のあるベクトル検索はデータ収集に膨大なコストを必要とし，常に情報を最新に保つことは困難である．よって，本論文では GitHub API がサポートしている既存の Web 検索と LLM を用いた検索手法を提案する．これにより，提案する手法は低コストで常に最新の情報にアクセスすることができる．本手法は Web 検索と LLM を組み合わせる際に生じるいくつかの典型的な課題にも対応している．提案手法を評価した結果,有用なリポジトリを見つけ出すことができたことを確認した．"/>
+
+<meta name="citation_keywords" content=""/>
+
+<meta name="citation_pdf_url" content=""/>
+
+
+</head>
+
+<body>
+<!-- NAV -->
+
+
+
+<nav
+        class="navbar sticky-top navbar-expand-lg navbar-light bg-light mr-auto"
+        id="main-nav"
+>
+    <div class="container">
+        
+        
+        <a class="navbar-brand" href="papers.html">NLP2024</a>
+        
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+                class="collapse navbar-collapse text-right flex-grow-1"
+                id="navbarNav"
+        >
+            <ul class="navbar-nav ml-auto">
+                
+                <li class="nav-item ">
+                    <a class="nav-link" href="papers.html">Papers</a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+<!-- User Overrides -->
+ 
+
+<div class="container">
+    <!-- Tabs -->
+    <div class="tabs">
+         
+    </div>
+    <!-- Content -->
+    <div class="content">
+        
+
+<!-- Title -->
+<div class="pp-card m-3" style="">
+    <div class="card-header">
+        <h2 class="card-title main-title text-center" style="">
+            コード生成のための大規模言語モデルを用いた検索手法
+        </h2>
+        <h3 class="card-subtitle mb-2 text-muted text-center">
+            
+            <a href="papers.html?filter=authors&search=○中原康宏, 宮下大輔, 出口淳 (キオクシア)"
+               class="text-muted"
+            >○中原康宏, 宮下大輔, 出口淳 (キオクシア)</a
+            >
+            
+        </h3>
+        <p class="card-text text-center">
+            <span class="">Keywords:</span>
+            
+            <a
+                    href="papers.html?filter=keywords&search="
+                    class="text-secondary text-decoration-none"
+            ></a
+            >
+            
+        </p>
+        <div class="text-center p-3">
+            
+            <a class="card-link" target="_blank" href="https://anlp.jp/proceedings/annual_meeting/2024/pdf_dir/P11-25.pdf">
+                Paper (PDF)
+            </a>
+            
+        </div>
+    </div>
+</div>
+<div id="details" class="pp-card m-3">
+    <div class="card-body">
+        <div class="card-text">
+            <div id="abstractExample">
+                <span class="font-weight-bold">Abstract:</span>
+                Large Language Model によるプログラムコード生成は有用であるが，LLM が持つ情報の更新には膨大なコストが必要である．この課題に対応するために，関連する情報を検索し LLM への入力に追加する手法が提唱されており，コード生成の分野ではBM25 などのベクトル検索を用いた手法が成果を挙げている．しかし，GitHub のような Web サイトをデータベースとする場合，全データを手元に置く必要のあるベクトル検索はデータ収集に膨大なコストを必要とし，常に情報を最新に保つことは困難である．よって，本論文では GitHub API がサポートしている既存の Web 検索と LLM を用いた検索手法を提案する．これにより，提案する手法は低コストで常に最新の情報にアクセスすることができる．本手法は Web 検索と LLM を組み合わせる際に生じるいくつかの典型的な課題にも対応している．提案手法を評価した結果,有用なリポジトリを見つけ出すことができたことを確認した．
+            </div>
+        </div>
+        <p></p>
+    </div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.3.200/build/pdf.min.js"></script>
+<script src="static/js/modules/pdfRender.js"></script>
+<script>
+  $(document).ready(() => {
+    // render first page of PDF to div
+    // PDF name can be bound to variable -- e.g. paper.content.poster_link
+    const pdfFile =
+      " ";
+    initPDFViewer(pdfFile, "#pdf_view");
+  });
+</script>
+
+
+
+    </div>
+</div>
+
+
+
+<!-- Google Analytics -->
+<script
+        async
+        src="https://www.googletagmanager.com/gtag/js?id="
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag("js", new Date());
+  gtag("config", "");
+</script>
+
+
+
+<!-- Code for hash tags -->
+<script type="text/javascript">
+  $(document).ready(function () {
+    if (window.location.hash !== "") {
+      $(`a[href="${window.location.hash}"]`).tab("show");
+    }
+
+    $("a[data-toggle='tab']").on("shown.bs.tab", function (e) {
+      const hash = $(e.target).attr("href");
+      if (hash.substr(0, 1) === "#") {
+        const position = $(window).scrollTop();
+        window.location.replace(`#${hash.substr(1)}`);
+        $(window).scrollTop(position);
+      }
+    });
+  });
+</script>
+<!--    <script src="static/js/modules/lazyLoad.js"></script>-->
+
+</body>
+</html>
