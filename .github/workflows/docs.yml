@@ -31,3 +31,4 @@ jobs:
       with:
           FOLDER: build/ # The folder the action should deploy.
           CLEAN: true
+          BRANCH: gh-pages
