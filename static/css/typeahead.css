@@ -25,6 +25,7 @@
 }
 
 .tt-hint {
+  display: none;
   color: #999;
 }
 
