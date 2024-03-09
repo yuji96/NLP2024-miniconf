@@ -7,7 +7,7 @@ logo:
 # uncomment the following line to show the site title next to the logo image
 site_title: NLP2024
 page_title:
-  prefix: 'NLP2024'
+  prefix: 'NLP2024: '
 
 calendar:
   colors: #  Colors for the different event hashtags:
