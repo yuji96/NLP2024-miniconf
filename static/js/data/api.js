@@ -76,7 +76,7 @@ class API {
    * @return {string}
    */
   static posterLink(paper) {
-    return `${paper.UID}`;
+    return `/${paper.UID}`;
   }
 
   /**
