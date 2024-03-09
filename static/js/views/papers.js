@@ -108,14 +108,17 @@ const render = () => {
   if (f_test.length === 0) updateCards(allPapers);
   else {
     const fList = allPapers.filter((d) => {
+      // d が論文の属性
       let i = 0;
       let pass_test = true;
       while (i < f_test.length && pass_test) {
+        // f_test[i][0] 検索項目, f_test[i][1] 検索値
         if (f_test[i][0] === "titles") {
           pass_test &=
             d.title.toLowerCase().indexOf(f_test[i][1].toLowerCase()) >
             -1;
         } else if (f_test[i][0] === "session") {
+          // FIXME
           pass_test &= d["sessions"].indexOf(f_test[i][1]) > -1;
         } else {
           pass_test &= d[f_test[i][0]].indexOf(f_test[i][1]) > -1;
@@ -162,7 +165,8 @@ const start = () => {
 
       // persistor = new Persistor("miniconf-" + config.name);
 
-      shuffleArray(papers);
+      // disable shuffle
+      // shuffleArray(papers);
 
       allPapers = papers;
       calcAllKeys(allPapers, allKeys);
