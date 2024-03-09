@@ -201,7 +201,7 @@ def chat():
 # FRONT END SERVING
 
 
-@app.route("/papers.json")
+@app.route("/papers_info.json")
 def paper_json():
     json = []
     for v in site_data["papers"]:
